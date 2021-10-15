@@ -1,0 +1,78 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family:  "Poppins-Bold";
+    color: #fff;
+    
+   }
+section{
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background: url("../img/fondo.jpg");
+    background-size: cover;
+    background-position: center center;
+}
+.form-container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #222;
+    width: 380px;
+    padding: 50px 30px;
+    border-radius: 10px;
+    box-shadow: 7px 7px 60px #000;
+}
+
+h1{
+    text-transform: uppercase;
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 1em;
+}
+.control input{
+
+     width: 100%;
+     display: block;
+     padding: 10px;
+     color: #222;
+     border: none;
+     outline: none;
+     margin: 1em  0;
+}
+.control input[type="submit"]{
+    font-family: Poppins-Medium;
+    font-size: 20px;
+    line-height: 1.2;
+    background: #fff;
+    color: rgb(0, 0, 0);
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    width: 100%;
+    height: 50px;
+    opacity: .8;
+    transition: opacity .3s ease;
+    cursor: pointer;
+    border-radius: 20px;
+}
+.control input[type="submit"]:hover{
+    opacity: 1;  
+}
+@media(max-width: 400px){
+    .form-container{
+            width: 90%;
+        }
+}
+@media(max-width: 400px){
+    .h1{
+        width: 90%;
+    }
+}
