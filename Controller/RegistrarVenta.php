@@ -6,11 +6,6 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-
-date_default_timezone_set("America/Bogota" ) ;
-    $dateInicial= date('Y-m-d');
-    $dateFinal= date('Y-m-d');
-
 if (isset($_GET['RegistarVenta'])) {
     $con = new conexion();
 
@@ -62,7 +57,9 @@ if (isset($_GET['RegistarVenta'])) {
         $tipoMoneda = $dataMonedaValues['tipoMoneda'];
     }
 
-    
+    date_default_timezone_set("America/Caracas" ) ;
+    $dateInicial= date('Y-m-d');
+    $dateFinal= date('Y-m-d');
     $getNumeroFicha = $con-> getNumFicha($dateInicial,$dateFinal);
     foreach ( $getNumeroFicha as $numFicha){
         $ficha = $numFicha['numficha'];

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-10-2021 a las 19:28:46
+-- Tiempo de generación: 29-10-2021 a las 19:20:14
 -- Versión del servidor: 10.4.21-MariaDB
 -- Versión de PHP: 8.0.11
 
@@ -84,7 +84,8 @@ CREATE TABLE `cliente` (
 INSERT INTO `cliente` (`idcliente`, `foto`, `nombre`, `apellido`, `direccion`, `telefonoFijo`, `telefonoCelular`, `email`, `contactoReferencia`, `telefonoReferencia`, `observaciones`, `fechaRegistro`, `ci`) VALUES
 (1, 'fotoproducto/user03.jpg', 'pepitoo', 'perez', ' av siempre viva', '6166166', '3333333333', 'correo@jajaja.com', '', '', '', '2021-09-14', '555555555'),
 (3, 'fotoproducto/foto.jpg', 'diego', 'melo mahecha', 'avenidad siempre viva', '3131313131', '3131313131', 'avenida@gmail.com', '', '', '', '2021-10-10', '1118572738'),
-(6, 'fotoproducto/user03.jpg', '', 'S/N', '', '', '', '', '', '', '', '2021-10-09', '0');
+(6, 'fotoproducto/user03.jpg', '', 'S/N', '', '', '', '', '', '', '', '2021-10-09', '0'),
+(7, 'fotoUsuario/user.png', '', 'nuevoi', '', '', '', '', '', '', '', '2021-10-29', '1212');
 
 -- --------------------------------------------------------
 
@@ -109,18 +110,8 @@ CREATE TABLE `clientedato` (
 --
 
 INSERT INTO `clientedato` (`idCliente`, `nombre`, `ci`, `fecha`, `totalApagar`, `efectivo`, `cambio`, `idClientei`, `tipoVenta`) VALUES
-(1, 'S/N', '0', '2021-10-15 19:04:30', 2000, 2000, 0, '1', 'Local'),
-(2, 'S/N', '0', '2021-10-15 19:08:46', 2000, 2000, 0, '1', 'Local'),
-(3, 'S/N', '0', '2021-10-15 19:08:50', 2000, 2000, 0, '1', 'Local'),
-(4, 'S/N', '0', '2021-10-15 19:10:18', 2000, 2000, 0, '1', 'Local'),
-(5, 'S/N', '0', '2021-10-15 19:10:27', 2000, 2000, 0, '1', 'Local'),
-(6, 'S/N', '0', '2021-10-15 19:10:34', 2000, 2000, 0, '1', 'Local'),
-(7, 'S/N', '0', '2021-10-15 19:14:40', 2000, 2000, 0, '1', 'Local'),
-(8, 'S/N', '0', '2021-10-15 12:14:43', 2000, 2000, 0, '1', 'Local'),
-(9, 'S/N', '0', '2021-10-15 12:14:55', 2000, 2000, 0, '1', 'Local'),
-(10, 'S/N', '0', '2021-10-15 19:15:30', 2000, 2000, 0, '1', 'Local'),
-(11, 'S/N', '0', '2021-10-15 19:16:15', 2000, 2000, 0, '1', 'Local'),
-(12, 'S/N', '0', '2021-10-15 12:16:32', 2000, 2000, 0, '1', 'Local');
+(1, 'S/N', '0', '2021-10-29 10:17:22', 20, 20, 0, '1', 'Local'),
+(2, 'nuevoi', '1212', '2021-10-29 11:32:15', 20, 2000, 1980, '1', 'Local');
 
 -- --------------------------------------------------------
 
@@ -147,6 +138,120 @@ INSERT INTO `datos` (`iddatos`, `propietario`, `razon`, `direccion`, `nro`, `tel
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `datosclienteventa`
+--
+
+CREATE TABLE `datosclienteventa` (
+  `idClienteVenta` int(11) NOT NULL,
+  `fechaVenta` varchar(150) NOT NULL,
+  `nitCliente` varchar(50) NOT NULL,
+  `cliente` varchar(50) NOT NULL,
+  `codigoControl` varchar(50) NOT NULL,
+  `idVentas` varchar(50) NOT NULL,
+  `estado` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datosclienteventa`
+--
+
+INSERT INTO `datosclienteventa` (`idClienteVenta`, `fechaVenta`, `nitCliente`, `cliente`, `codigoControl`, `idVentas`, `estado`) VALUES
+(1, '2021-10-27 16:45:26', '0', 'S/N', '81-A6-E0-EE', '1', 'NoConsolidado'),
+(2, '2021-10-27 17:29:38', '0', 'S/N', '81-A6-E0-EE', '2', 'NoConsolidado'),
+(3, '2021-10-27 17:46:51', '0', 'S/N', '81-A6-E0-EE', '3', 'NoConsolidado'),
+(4, '2021-10-27 18:09:51', '0', 'S/N', '81-A6-E0-EE', '4', 'NoConsolidado'),
+(5, '2021-10-27 18:18:12', '0', 'S/N', '81-A6-E0-EE', '5', 'NoConsolidado'),
+(6, '2021-10-27 19:09:39', '0', 'S/N', '81-A6-E0-EE', '6', 'NoConsolidado'),
+(7, '2021-10-27 19:11:09', '1118572738', 'melo mahecha', '81-A6-E0-EE', '7', 'NoConsolidado'),
+(8, '2021-10-29 17:17:03', '0', 'S/N', '81-A6-E0-EE', '8', 'NoConsolidado'),
+(9, '2021-10-29 17:17:15', '0', 'S/N', '81-A6-E0-EE', '9', 'NoConsolidado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datosfacturaventa`
+--
+
+CREATE TABLE `datosfacturaventa` (
+  `idDatosFactura` int(11) NOT NULL,
+  `nit` varchar(150) NOT NULL,
+  `factura` varchar(50) NOT NULL,
+  `numeroAutorizacion` varchar(50) NOT NULL,
+  `codigoControl` varchar(50) NOT NULL,
+  `idVentas` varchar(50) NOT NULL,
+  `estado` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datosfacturaventa`
+--
+
+INSERT INTO `datosfacturaventa` (`idDatosFactura`, `nit`, `factura`, `numeroAutorizacion`, `codigoControl`, `idVentas`, `estado`) VALUES
+(1, '1689353', '1503', '29040011007', '81-A6-E0-EE', '1', 'NoConsolidado'),
+(2, '1689353', '1503', '29040011007', '81-A6-E0-EE', '2', 'NoConsolidado'),
+(3, '1689353', '1503', '29040011007', '81-A6-E0-EE', '3', 'NoConsolidado'),
+(4, '1689353', '1503', '29040011007', '81-A6-E0-EE', '4', 'NoConsolidado'),
+(5, '1689353', '1503', '29040011007', '81-A6-E0-EE', '5', 'NoConsolidado'),
+(6, '1689353', '1503', '29040011007', '81-A6-E0-EE', '6', 'NoConsolidado'),
+(7, '1689353', '1503', '29040011007', '81-A6-E0-EE', '7', 'NoConsolidado'),
+(8, '1118577539', '1503', '29040011007', '81-A6-E0-EE', '8', 'NoConsolidado'),
+(9, '1118577539', '1503', '29040011007', '81-A6-E0-EE', '9', 'NoConsolidado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datosventa`
+--
+
+CREATE TABLE `datosventa` (
+  `idDatosVentas` int(11) NOT NULL,
+  `cantidad` varchar(150) NOT NULL,
+  `descripcion` varchar(50) NOT NULL,
+  `precio` varchar(50) NOT NULL,
+  `total` varchar(50) NOT NULL,
+  `tipo` varchar(50) NOT NULL,
+  `fechaVenta` datetime NOT NULL,
+  `codigoControl` varchar(50) NOT NULL,
+  `idVentas` double NOT NULL,
+  `estado` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `datosventa`
+--
+
+INSERT INTO `datosventa` (`idDatosVentas`, `cantidad`, `descripcion`, `precio`, `total`, `tipo`, `fechaVenta`, `codigoControl`, `idVentas`, `estado`) VALUES
+(1, '2', 'figuras dragonball', '2000', '4000', 'Mesa', '2021-10-27 16:45:26', '81-A6-E0-EE', 1, 'NoConsolidado'),
+(2, '1', 'un cuarto', '2000', '2000', 'Mesa', '2021-10-27 17:29:38', '81-A6-E0-EE', 2, 'NoConsolidado'),
+(3, '1', 'figuras dragonball', '2000', '2000', 'Mesa', '2021-10-27 17:29:38', '81-A6-E0-EE', 2, 'NoConsolidado'),
+(4, '2', 'figuras dragonball', '2000', '4000', 'Mesa', '2021-10-27 17:46:51', '81-A6-E0-EE', 3, 'NoConsolidado'),
+(5, '1', 'figuras dragonball', '2000', '2000', 'Mesa', '2021-10-27 18:09:51', '81-A6-E0-EE', 4, 'NoConsolidado'),
+(6, '1', 'un cuarto', '2000', '2000', 'Mesa', '2021-10-27 18:18:12', '81-A6-E0-EE', 5, 'NoConsolidado'),
+(7, '1', 'figuras dragonball', '2000', '2000', 'Mesa', '2021-10-27 19:09:39', '81-A6-E0-EE', 6, 'NoConsolidado'),
+(8, '2', 'nugets', '4000', '8000', 'Mesa', '2021-10-27 19:11:09', '81-A6-E0-EE', 7, 'NoConsolidado'),
+(9, '1', 'nugets', '4000', '4000', 'Llevar', '2021-10-29 17:17:03', '81-A6-E0-EE', 8, 'NoConsolidado'),
+(10, '1', 'fdf', '20', '20', 'Mesa', '2021-10-29 17:17:15', '81-A6-E0-EE', 9, 'NoConsolidado');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `datosventatotal`
+--
+
+CREATE TABLE `datosventatotal` (
+  `idVentas` int(11) NOT NULL,
+  `cliente` varchar(150) NOT NULL,
+  `cantidad` varchar(50) NOT NULL,
+  `precio` varchar(50) NOT NULL,
+  `total` varchar(50) NOT NULL,
+  `codigoControl` varchar(50) NOT NULL,
+  `fechaVenta` datetime NOT NULL,
+  `estado` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `dosificacion`
 --
 
@@ -164,7 +269,7 @@ CREATE TABLE `dosificacion` (
 --
 
 INSERT INTO `dosificacion` (`idcodigo`, `autorizacion`, `factura`, `llave`, `nit`, `fechaL`) VALUES
-(1, '29040011007', '1503', '9rCB7Sv4X29d)5k7N%3ab89p-3(5[A', '1689353', '2021-12-31');
+(1, '29040011007', '1503', '9rCB7Sv4X29d)5k7N%3ab89p-3(5[A', '1118577539', '2021-12-31');
 
 -- --------------------------------------------------------
 
@@ -174,6 +279,22 @@ INSERT INTO `dosificacion` (`idcodigo`, `autorizacion`, `factura`, `llave`, `nit
 
 CREATE TABLE `ficha` (
   `idficha` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `gastos`
+--
+
+CREATE TABLE `gastos` (
+  `idgastos` int(11) NOT NULL,
+  `descripcion` varchar(150) NOT NULL,
+  `entrada` double NOT NULL,
+  `fechaRegistro` date NOT NULL,
+  `usuario` varchar(150) NOT NULL,
+  `salida` varchar(150) NOT NULL,
+  `tipo` varchar(150) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -266,13 +387,6 @@ CREATE TABLE `preventa` (
   `tipo` varchar(150) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `preventa`
---
-
-INSERT INTO `preventa` (`idPreventa`, `imagen`, `producto`, `precio`, `idProducto`, `pventa`, `idUser`, `tipo`) VALUES
-(1, 'fotoproducto/arte-dragon-ball-super-goku-and-black-goku_7680x4320_xtrafondos.com.jpg', 'figuras dragonball', 2000, '3', '2000', 20, 'Mesa');
-
 -- --------------------------------------------------------
 
 --
@@ -299,7 +413,8 @@ CREATE TABLE `producto` (
 INSERT INTO `producto` (`idproducto`, `imagen`, `codigo`, `nombreProducto`, `cantidad`, `fechaRegistro`, `precioVenta`, `tipo`, `proveedor`, `precioCompra`) VALUES
 (1, 'fotoproducto/imagen_1349563845.jpg', 'un cuarto', 'un cuarto', '100', '2021-10-07', '2000', 'pollo', '', '20'),
 (3, 'fotoproducto/arte-dragon-ball-super-goku-and-black-goku_7680x4320_xtrafondos.com.jpg', '12', 'figuras dragonball', '100', '2021-10-07', '2000', 'REFRESCO GASEOSA', '', '1000'),
-(4, 'fotoUsuario/user.png', '33', 'fdf', '100', '2021-10-12', '20', 'POLLO', '', '40');
+(4, 'fotoUsuario/user.png', '33', 'fdf', '100', '2021-10-12', '20', 'POLLO', '', '40'),
+(5, 'fotoUsuario/user.png', '3232', 'nugets', '100', '2021-10-27', '4000', 'POLLO', '', '2000');
 
 -- --------------------------------------------------------
 
@@ -373,6 +488,39 @@ INSERT INTO `usuarios` (`id_usu`, `login`, `tipo`, `nombre`, `password`, `foto`)
 (19, '12345', 'ADMINISTRADOR', 'admin', '12345', 'fotoproducto/137313.jpg'),
 (20, 'prueba', 'ADMINISTRADOR', 'prueba', 'prueba', 'fotoproducto/4k-minimalist-wallpaper-26.jpg');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `ventatotal`
+--
+
+CREATE TABLE `ventatotal` (
+  `idVentas` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `ci` varchar(50) NOT NULL,
+  `fecha` datetime NOT NULL,
+  `totalApagar` double NOT NULL,
+  `efectivo` double NOT NULL,
+  `cambio` double NOT NULL,
+  `idClientei` varchar(50) NOT NULL,
+  `codigoControl` varchar(50) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ventatotal`
+--
+
+INSERT INTO `ventatotal` (`idVentas`, `nombre`, `ci`, `fecha`, `totalApagar`, `efectivo`, `cambio`, `idClientei`, `codigoControl`) VALUES
+(1, 'S/N', '0', '2021-10-27 16:45:26', 4000, 5000, 1000, '6', '81-A6-E0-EE'),
+(2, 'S/N', '0', '2021-10-27 17:29:38', 4000, 4000, 0, '6', '81-A6-E0-EE'),
+(3, 'S/N', '0', '2021-10-27 17:46:51', 4000, 6000, 2000, '6', '81-A6-E0-EE'),
+(4, 'S/N', '0', '2021-10-27 18:09:51', 2000, 3000, 1000, '6', '81-A6-E0-EE'),
+(5, 'S/N', '0', '2021-10-27 18:18:12', 2000, 2000, 0, '6', '81-A6-E0-EE'),
+(6, 'S/N', '0', '2021-10-27 19:09:39', 2000, 2000, 0, '6', '81-A6-E0-EE'),
+(7, 'melo mahecha', '1118572738', '2021-10-27 19:11:09', 8000, 50000, 42000, '3', '81-A6-E0-EE'),
+(8, 'S/N', '0', '2021-10-29 17:17:03', 4000, 5000, 1000, '6', '81-A6-E0-EE'),
+(9, 'S/N', '0', '2021-10-29 17:17:15', 20, 20, 0, '6', '81-A6-E0-EE');
+
 --
 -- Índices para tablas volcadas
 --
@@ -408,10 +556,40 @@ ALTER TABLE `datos`
   ADD PRIMARY KEY (`iddatos`);
 
 --
+-- Indices de la tabla `datosclienteventa`
+--
+ALTER TABLE `datosclienteventa`
+  ADD PRIMARY KEY (`idClienteVenta`);
+
+--
+-- Indices de la tabla `datosfacturaventa`
+--
+ALTER TABLE `datosfacturaventa`
+  ADD PRIMARY KEY (`idDatosFactura`);
+
+--
+-- Indices de la tabla `datosventa`
+--
+ALTER TABLE `datosventa`
+  ADD PRIMARY KEY (`idDatosVentas`);
+
+--
+-- Indices de la tabla `datosventatotal`
+--
+ALTER TABLE `datosventatotal`
+  ADD PRIMARY KEY (`idVentas`);
+
+--
 -- Indices de la tabla `dosificacion`
 --
 ALTER TABLE `dosificacion`
   ADD PRIMARY KEY (`idcodigo`);
+
+--
+-- Indices de la tabla `gastos`
+--
+ALTER TABLE `gastos`
+  ADD PRIMARY KEY (`idgastos`);
 
 --
 -- Indices de la tabla `idioma`
@@ -462,6 +640,12 @@ ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id_usu`);
 
 --
+-- Indices de la tabla `ventatotal`
+--
+ALTER TABLE `ventatotal`
+  ADD PRIMARY KEY (`idVentas`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -481,13 +665,13 @@ ALTER TABLE `alerta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `idcliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `clientedato`
 --
 ALTER TABLE `clientedato`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `datos`
@@ -496,10 +680,40 @@ ALTER TABLE `datos`
   MODIFY `iddatos` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT de la tabla `datosclienteventa`
+--
+ALTER TABLE `datosclienteventa`
+  MODIFY `idClienteVenta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `datosfacturaventa`
+--
+ALTER TABLE `datosfacturaventa`
+  MODIFY `idDatosFactura` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT de la tabla `datosventa`
+--
+ALTER TABLE `datosventa`
+  MODIFY `idDatosVentas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT de la tabla `datosventatotal`
+--
+ALTER TABLE `datosventatotal`
+  MODIFY `idVentas` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `dosificacion`
 --
 ALTER TABLE `dosificacion`
   MODIFY `idcodigo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT de la tabla `gastos`
+--
+ALTER TABLE `gastos`
+  MODIFY `idgastos` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `idioma`
@@ -523,13 +737,13 @@ ALTER TABLE `moneda`
 -- AUTO_INCREMENT de la tabla `preventa`
 --
 ALTER TABLE `preventa`
-  MODIFY `idPreventa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `idPreventa` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idproducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `proveedor`
@@ -548,6 +762,12 @@ ALTER TABLE `tipoproducto`
 --
 ALTER TABLE `usuarios`
   MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+
+--
+-- AUTO_INCREMENT de la tabla `ventatotal`
+--
+ALTER TABLE `ventatotal`
+  MODIFY `idVentas` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

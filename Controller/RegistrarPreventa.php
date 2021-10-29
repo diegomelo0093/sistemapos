@@ -6,6 +6,7 @@ require_once('Codigo_control.class.php');
 if (!isset($_SESSION)) {
     session_start();
 }
+
 date_default_timezone_set("America/Bogota" ) ;
     $dateInicial= date('Y-m-d');
     $dateFinal= date('Y-m-d');
@@ -84,19 +85,14 @@ $datosFactura = $con-> getDatosFactura();
      $efectivo = $datosCliente['efectivo'];
      $cambio = $datosCliente['cambio'];
  }
-
  $pedidoTotalPreventa = $con->getPedidoTotalForFactura();
  $pedido = mysqli_num_rows($pedidoTotalPreventa);
-
 $dataMoneda = $con -> getMoneda();
-
 while ($dataMonedaValues = mysqli_fetch_array($dataMoneda)){
     $contextMoneda = $dataMonedaValues['contexto'];
     $tipoMoneda = $dataMonedaValues['tipoMoneda'];
 }
-
 $fechaCodigoControl = date("Ymd");
-
 $codigoControl = new CodigoControl($autorizacion, $factura, $ci, $fechaCodigoControl, $totalApagar, $llave);
 $getCodigoControl = $codigoControl->generar();
 
@@ -107,8 +103,14 @@ $fechaLimiteDia=$getDatosFecha[2];
 
 $fechaLimiteEmision = $fechaLimiteDia.' / '.$fechaLimiteMes.' / '.$fechaLimiteAnio;
 
-$getNumeroFicha = $con->getNumFicha();
-$ficha = mysqli_num_rows($getNumeroFicha);
+
+$getNumeroFicha = $con->getNumFicha($dateInicial,$dateFinal);
+foreach ( $getNumeroFicha as $numFicha){
+    $ficha = $numFicha['numficha'];
+}
+
+
+
 
 $menuMain = $con->getMenuMain();
 require('../Views/ShowFacturaViews.php');

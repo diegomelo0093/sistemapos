@@ -539,11 +539,11 @@ class Conexion
     }
 
 //aca se inicia la ficha para la factura
-    public function getNumFicha()
-    {
-        $query = $this->con->query("SELECT (COUNT(*) +1 ) as numficha FROM `ficha`");
-        return $query;
-    }
+public function getNumFicha($dateInicial, $dateFinal)
+{
+    $query = $this->con->query("SELECT (COUNT(*) +1 ) as numficha FROM `ventatotal` WHERE fecha >= '$dateInicial 00:00:00' and fecha <= '$dateFinal 23:59:00'");
+    return $query;
+}
     //termina la funcion de la ficha
 
     public function registrarVenta($nombre, $ci, $totalAPagar, $efectivo, $cambio, $idClientei, $codigoControl, $fechaVenta)
